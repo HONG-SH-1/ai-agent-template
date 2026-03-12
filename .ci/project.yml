@@ -1,0 +1,17 @@
+# ============================================================
+# 프로젝트 CI 설정 — .ci/project.yml
+# 이 파일만 프로젝트에 맞게 수정. ci.yml은 수정하지 않음.
+# ============================================================
+
+jobs:
+
+  # ── Java 백엔드 (Maven) ────────────────────────────────────
+  - name: backend-java
+    runs_on: ubuntu-latest
+    working_directory: .
+    runtime:
+      language: java
+      version: "17"
+    build_tool: maven
+    test_command: mvn clean test
+
