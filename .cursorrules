@@ -9,8 +9,7 @@
 # Universal Cursor Rules — Absolute Final
 
 ## [세션 시작 — MANDATORY]
-작업 시작 전 docs/plan.md + docs/checklist.md + error_log.md 를 읽고 각각 1줄 요약해라.
-파일이 없으면 "[없음]" 으로 표기. 요약 없이 진행 금지.
+작업 시작 전 docs/plan.md + docs/checklist.md + error_log.md + docs/high_risk_areas.md 를 읽고 각각 1줄 요약해라.
 
 ## [계획 게이트]
 docs/plan.md 에 (목표 / 변경 파일 / 리스크 / 대책) 작성 후 "승인" 요청.
@@ -30,6 +29,7 @@ DB 마이그레이션 / 스키마 변경 / 데이터 변환 작업 전 반드시
 롤백 계획 없는 비가역 작업 시작 금지.
 
 ## [고위험 파일 게이트]
+docs/high_risk_areas.md에 명시된 경로 파일 작업 시 아래 규칙 적용.
 Auth / Security / Transaction / Payment 관련 변경:
 - Accept All 절대 금지 — 파일별 diff 개별 승인만
 - 파일 전체 덮어쓰기 금지 — 메서드/블록 단위 수정만
