@@ -1,13 +1,12 @@
 # High Risk Areas
 
-## Auth
-Backend-main/src/main/java/com/example/backend_main/HSH/service/AuthService.java
-Backend-main/src/main/java/com/example/backend_main/common/security/JwtAccessDeniedHandler.java
-Backend-main/src/main/java/com/example/backend_main/common/security/JwtAuthenticationEntryPoint.java
-Backend-main/src/main/java/com/example/backend_main/common/security/SecurityMonitorService.java
+## 고위험 도메인
+- Auth / Security / Transaction / Payment
 
-## Payment
-Backend-main/src/main/java/com/example/backend_main/ky/service/PaymentService.java
+## 실제 경로 (프로젝트마다 여기에 추가)
+# 예시:
+# src/main/java/com/example/service/AuthService.java
+# src/main/java/com/example/security/
 
 ## 적용 규칙
 위 경로 파일 수정 시:
