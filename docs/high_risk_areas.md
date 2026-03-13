@@ -1,18 +1,17 @@
-# 고위험 영역 정의
+# High Risk Areas
 
-이 파일에 정의된 영역은 모두 "고위험 파일"로 간주하며,
-`.cursorrules`의 고위험 파일 게이트 규칙을 적용한다.
+## Auth
+Backend-main/src/main/java/com/example/backend_main/HSH/service/AuthService.java
+Backend-main/src/main/java/com/example/backend_main/common/security/JwtAccessDeniedHandler.java
+Backend-main/src/main/java/com/example/backend_main/common/security/JwtAuthenticationEntryPoint.java
+Backend-main/src/main/java/com/example/backend_main/common/security/SecurityMonitorService.java
 
-## 기본 고위험 도메인
+## Payment
+Backend-main/src/main/java/com/example/backend_main/ky/service/PaymentService.java
 
-- Auth / 인증 관련 패키지 및 클래스
-- Security / 권한, 인가, 암호화 관련 코드
-- Transaction / 트랜잭션 경계 및 롤백 정책
-- Payment / 결제, 정산, 외부 PG 연동
-
-## 프로젝트별 추가 고위험 영역 (필요 시 확장)
-
-- (예시) 대량 배치 처리 Job
-- (예시) 개인정보 마스킹/비식별화 로직
-
-실제 디렉토리/패키지 경로는 이 파일에 구체적으로 추가해 가며 관리한다.
+## 적용 규칙
+위 경로 파일 수정 시:
+- Accept All 절대 금지
+- 파일별 diff 개별 승인만
+- 메서드/블록 단위 수정만
+- 완료 후 null/빈값/권한 없는 사용자 테스트 확인

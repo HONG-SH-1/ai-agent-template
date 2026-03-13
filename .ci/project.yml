@@ -8,10 +8,9 @@ jobs:
   # ── Java 백엔드 (Maven) ────────────────────────────────────
   - name: backend-java
     runs_on: ubuntu-latest
-    working_directory: .
+    working_directory: Backend-main
     runtime:
       language: java
       version: "17"
     build_tool: maven
     test_command: mvn clean test
-
