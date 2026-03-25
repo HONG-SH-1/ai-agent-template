@@ -1,0 +1,48 @@
+---
+description: Java/Spring Boot 보안 코딩 패턴
+globs:
+  - "**/*.java"
+  - "**/pom.xml"
+  - "**/application*.yml"
+  - "**/application*.properties"
+alwaysApply: false
+---
+
+## [Java 보안 코딩 규칙]
+
+### 암호화
+- 이메일/전화번호 저장: AES-256 (Aes256Util 사용)
+- 비밀번호/해시 검색용: SHA-256 (HashUtil.generateHash())
+- DB 검색 시: 원본 컬럼 아닌 HASH 컬럼 사용
+  (EMAIL_HASH, PHONE_HASH)
+- 민감정보 하드코딩 금지 → 환경변수로
+
+### JWT
+- 설정 키 이름: jwt.expiration (jwt.expiry 아님)
+- 토큰 만료 처리 반드시 구현
+- Refresh Token DB 저장 필수
+
+### 엔티티/VO/DTO
+- equals() + hashCode() 필수
+- @Transactional은 grep 금지
+  코드 리뷰 + 테스트로만 검증
+
+### 예외 처리
+- CustomException + ErrorCode 패턴 사용
+- 로그에 원본 개인정보 출력 금지
+  (이메일, 전화번호, 비밀번호, 임시비밀번호)
+
+### Rate Limiting
+- IP 기반 요청 제한 시 X-Forwarded-For 신뢰 금지
+- 보안 판단용 IP: getRateLimitIp() (직접 연결 IP)
+- 로그용 IP: getClientIp() (프록시 고려)
+
+### DB 스키마 변경
+- Flyway/Liquibase 마이그레이션 스크립트 필수
+- hibernate.ddl-auto=update 운영 환경 금지
+- 변경 전 "[롤백 계획]" 보고 필수
+
+### 의존성 추가
+새 라이브러리 추가 시:
+"[의존성 체크] 라이선스: X / CVE 여부: Y / 마지막 업데이트: Z"
+GPL 계열은 별도 검토 요청.
